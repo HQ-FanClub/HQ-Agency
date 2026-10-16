@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" fill="none">
+ <defs><linearGradient id="white" x1="201" y1="80" x2="323" y2="223" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".65" stop-color="#e4ede5"/><stop offset="1" stop-color="#b7cbbb"/></linearGradient><linearGradient id="black" x1="109" y1="66" x2="167" y2="226" gradientUnits="userSpaceOnUse"><stop stop-color="#56665a"/><stop offset=".4" stop-color="#263d2d"/><stop offset="1" stop-color="#16261b"/></linearGradient><linearGradient id="screen" x1="229" y1="108" x2="300" y2="191" gradientUnits="userSpaceOnUse"><stop stop-color="#314c3a"/><stop offset="1" stop-color="#142b1d"/></linearGradient><radialGradient id="lens"><stop stop-color="#0b191a"/><stop offset=".5" stop-color="#486c68"/><stop offset="1" stop-color="#0b1a15"/></radialGradient><filter id="s"><feGaussianBlur stdDeviation="7"/></filter></defs>
+ <ellipse cx="221" cy="256" rx="131" ry="10" fill="#173f35" opacity=".1" filter="url(#s)"/>
+ <path d="m107 61 64 11v168l-64-11z" fill="#8caa91" stroke="#698a71"/><path d="m102 57 64 11v168l-64-11z" fill="url(#black)" stroke="#779781"/>
+ <circle cx="134" cy="104" r="17" fill="#14251b" stroke="#89a08a" stroke-width="1.5"/><circle cx="134" cy="104" r="11" fill="url(#lens)"/><circle cx="130" cy="100" r="3" fill="#79a4a0" opacity=".65"/>
+ <g stroke="#8ba18a" stroke-width="2" stroke-linecap="round"><path d="m123 139 21 4m-21 3 21 4m-21 3 21 4m-21 3 21 4"/></g>
+ <circle cx="135" cy="192" r="13" fill="#607e63" stroke="#a0b99f"/><path d="M131 192h8m-4-4v8" stroke="#d6e4cf" stroke-width="1.5"/>
+ <path d="m196 79 153 22v133l-153-23z" fill="#98b29e" stroke="#9eb5a2"/><path d="m190 74 153 22v133l-153-23z" fill="url(#white)" stroke="#b7cdbb"/>
+ <path d="m204 94 124 18v83l-124-18z" fill="#1c3222"/><path d="m210 101 112 16v70l-112-16z" fill="url(#screen)"/>
+ <path d="m210 141 38-19 32 28 42-12v49l-112-16z" fill="#648b6c" opacity=".55"/><path d="m226 171 0-26 28-13 0 43m27 4v-23l20-9v35" stroke="#a1baa1" stroke-opacity=".4" stroke-width="1"/>
+ <path d="m211 104 110 16" stroke="#6e8e71" stroke-opacity=".6"/>
+ <g fill="#97ac98"><circle cx="242" cy="201" r="2.5"/><circle cx="261" cy="204" r="2.5"/><circle cx="280" cy="207" r="2.5"/><circle cx="299" cy="210" r="2.5"/></g>
+ <text x="221" y="92" fill="#8ba28d" font-family="Arial,sans-serif" font-size="9" font-style="italic" font-weight="700" transform="rotate(8 221 92)">dahua</text>
+</svg>

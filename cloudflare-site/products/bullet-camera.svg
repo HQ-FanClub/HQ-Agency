@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" fill="none">
+ <defs>
+  <linearGradient id="body" x1="188" y1="78" x2="234" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".46" stop-color="#e9eeed"/><stop offset="1" stop-color="#aebfbc"/></linearGradient>
+  <linearGradient id="top" x1="178" y1="64" x2="213" y2="132" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#cdd8d5"/></linearGradient>
+  <linearGradient id="rim" x1="100" y1="104" x2="174" y2="204" gradientUnits="userSpaceOnUse"><stop stop-color="#566563"/><stop offset=".5" stop-color="#151f20"/><stop offset="1" stop-color="#354543"/></linearGradient>
+  <radialGradient id="lens"><stop stop-color="#08171e"/><stop offset=".4" stop-color="#142e35"/><stop offset=".65" stop-color="#28565d"/><stop offset=".76" stop-color="#070f14"/><stop offset="1" stop-color="#132529"/></radialGradient>
+  <filter id="shadow"><feGaussianBlur stdDeviation="8"/></filter>
+ </defs>
+ <ellipse cx="231" cy="251" rx="141" ry="14" fill="#173f35" opacity=".1" filter="url(#shadow)"/>
+ <path d="m286 158 45 28-9 30-45-28" fill="#a8b8b5" stroke="#879b96"/>
+ <path d="m316 187 18-14 27 21-15 15z" fill="#e8eeeb"/>
+ <path d="m334 178 35 25-8 37-37-24z" fill="url(#body)" stroke="#b1c1bb"/>
+ <ellipse cx="353" cy="218" rx="13" ry="24" transform="rotate(-32 353 218)" fill="#dce5e1" stroke="#9eb3ab"/>
+ <circle cx="350" cy="201" r="2" fill="#80948e"/><circle cx="356" cy="233" r="2" fill="#80948e"/>
+ <path d="M137 80 285 111c24 5 36 30 30 57-6 26-23 40-48 35l-147-31z" fill="url(#body)" stroke="#bdcbc7" stroke-width="1.5"/>
+ <path d="M126 75c-14-3-28 8-36 26l177 38c7-17 16-24 25-25L141 77z" fill="url(#top)" stroke="#cdd8d3"/>
+ <path d="M91 101 268 139" stroke="#fff" stroke-width="3"/>
+ <ellipse cx="126" cy="140" rx="41" ry="59" transform="rotate(14 126 140)" fill="#dde5e2" stroke="#b8c6c1" stroke-width="2"/>
+ <ellipse cx="127" cy="140" rx="35" ry="51" transform="rotate(14 127 140)" fill="url(#rim)"/>
+ <ellipse cx="127" cy="141" rx="21" ry="29" transform="rotate(14 127 141)" fill="#141d1f" stroke="#74827d" stroke-width="2"/>
+ <ellipse cx="127" cy="141" rx="17" ry="24" transform="rotate(14 127 141)" fill="url(#lens)" stroke="#263e42"/>
+ <ellipse cx="121" cy="132" rx="5" ry="8" transform="rotate(14 121 132)" fill="#6ba0a2" opacity=".65"/>
+ <ellipse cx="133" cy="149" rx="3" ry="5" fill="#298490" opacity=".4"/>
+ <g fill="#6c7a72" stroke="#b2bcb3" stroke-width=".8"><ellipse cx="118" cy="102" rx="4" ry="5"/><ellipse cx="142" cy="108" rx="4" ry="5"/><ellipse cx="101" cy="123" rx="4" ry="5"/><ellipse cx="153" cy="135" rx="4" ry="5"/><ellipse cx="100" cy="154" rx="4" ry="5"/><ellipse cx="144" cy="169" rx="4" ry="5"/><ellipse cx="118" cy="179" rx="4" ry="5"/></g>
+ <path d="m181 178 69 15" stroke="#8ca39a" stroke-width="1"/><path d="m278 127 7 2" stroke="#b2c1bc" stroke-width="2"/>
+ <text x="197" y="153" fill="#687e74" font-family="Arial,sans-serif" font-size="14" font-style="italic" font-weight="700" transform="rotate(12 197 153)">dahua</text>
+</svg>

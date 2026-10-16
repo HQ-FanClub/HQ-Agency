@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" fill="none">
+ <defs><linearGradient id="w" x1="166" y1="66" x2="283" y2="208" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset=".55" stop-color="#e3ebe6"/><stop offset="1" stop-color="#8da799"/></linearGradient><linearGradient id="b" x1="184" y1="172" x2="270" y2="252" gradientUnits="userSpaceOnUse"><stop stop-color="#4a5b53"/><stop offset=".4" stop-color="#15241e"/><stop offset="1" stop-color="#050d0a"/></linearGradient><radialGradient id="l"><stop stop-color="#0a1416"/><stop offset=".5" stop-color="#31545b"/><stop offset=".8" stop-color="#07191c"/><stop offset="1" stop-color="#46695e"/></radialGradient><filter id="s"><feGaussianBlur stdDeviation="7"/></filter></defs>
+ <ellipse cx="221" cy="272" rx="83" ry="10" fill="#173f35" opacity=".1" filter="url(#s)"/>
+ <path d="m269 65 55-20 10 17-51 20" fill="url(#w)" stroke="#a5b9ad"/><path d="m320 34 18-4v55l-18 6z" fill="#d3dfd7" stroke="#a2b6a9"/>
+ <path d="M193 77V56c0-15 12-25 30-25s29 10 29 25v21" fill="url(#w)" stroke="#b9cabf"/>
+ <path d="M153 115c0-25 31-47 70-47s70 22 70 47l-8 70c-5 34-29 55-62 55s-58-20-63-55z" fill="url(#w)" stroke="#b7c9bc"/>
+ <ellipse cx="223" cy="113" rx="69" ry="38" fill="#f0f5f1" stroke="#c0cfc4"/>
+ <path d="M170 167c13 9 31 14 53 14 21 0 40-5 52-14l-4 43c-3 27-22 45-48 45s-46-18-49-45z" fill="url(#b)" stroke="#70867a"/>
+ <path d="M179 173c8 5 16 7 24 8v49c-13-6-20-16-22-32z" fill="#a8b9aa" opacity=".16"/>
+ <ellipse cx="225" cy="216" rx="24" ry="27" fill="#111d17" stroke="#728776"/><ellipse cx="225" cy="216" rx="17" ry="21" fill="url(#l)"/><ellipse cx="220" cy="209" rx="5" ry="7" fill="#81a4a0" opacity=".55"/>
+ <path d="M158 128c17 12 40 18 65 18s50-6 66-18" stroke="#a9bdb0"/><path d="M161 134c17 11 40 17 62 17s46-6 64-17" stroke="#fff" stroke-opacity=".8"/>
+ <text x="198" y="129" fill="#819888" font-family="Arial,sans-serif" font-size="13" font-style="italic" font-weight="700">dahua</text><circle cx="330" cy="44" r="2" fill="#8ba493"/><circle cx="330" cy="73" r="2" fill="#8ba493"/>
+</svg>

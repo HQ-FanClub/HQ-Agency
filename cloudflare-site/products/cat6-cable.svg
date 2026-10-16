@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" fill="none">
+ <defs><linearGradient id="plastic" x1="151" y1="87" x2="273" y2="239" gradientUnits="userSpaceOnUse"><stop stop-color="#b9d1c0"/><stop offset=".6" stop-color="#759d83"/><stop offset="1" stop-color="#426e55"/></linearGradient><linearGradient id="cable" x1="101" y1="138" x2="310" y2="202" gradientUnits="userSpaceOnUse"><stop stop-color="#6e9e91"/><stop offset=".5" stop-color="#477b6c"/><stop offset="1" stop-color="#1d5142"/></linearGradient><filter id="s"><feGaussianBlur stdDeviation="7"/></filter></defs>
+ <ellipse cx="220" cy="256" rx="131" ry="11" fill="#173f35" opacity=".12" filter="url(#s)"/>
+ <ellipse cx="256" cy="149" rx="60" ry="91" transform="rotate(20 256 149)" fill="#55745c" stroke="#2f553b" stroke-width="2"/>
+ <path d="m144 94 99-26 38 144-99 27z" fill="url(#cable)"/>
+ <g stroke="#2e6350" stroke-width="2" opacity=".7"><path d="m148 102 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25m-97 32 99-25"/></g>
+ <ellipse cx="159" cy="169" rx="64" ry="91" transform="rotate(20 159 169)" fill="url(#plastic)" stroke="#5c8567" stroke-width="2"/>
+ <ellipse cx="159" cy="169" rx="45" ry="69" transform="rotate(20 159 169)" fill="#95b89b" stroke="#527f5e" stroke-width="2"/>
+ <ellipse cx="159" cy="169" rx="18" ry="28" transform="rotate(20 159 169)" fill="#2a4934" stroke="#c0d4bd" stroke-width="4"/>
+ <path d="M156 96c-24 7-43 31-51 60M130 239c21 11 45 4 64-15" stroke="#d9e6ce" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/>
+ <text x="111" y="194" fill="#365a3d" font-family="Arial,sans-serif" font-weight="700" font-size="13" transform="rotate(-70 111 194)">CAT6</text>
+ <path d="M284 207c33 4 51 3 46-20s-30-16-25-2 32 23 44 8" stroke="#325d48" stroke-width="7" stroke-linecap="round"/>
+ <path d="M284 205c33 4 51 3 46-20" stroke="#7aa58a" stroke-width="2" stroke-linecap="round"/>
+ <g transform="rotate(-28 352 184)"><rect x="340" y="175" width="28" height="17" rx="3" fill="#93b9a4" stroke="#648c75"/><path d="M362 176h18v15h-18z" fill="#c9dfcf" fill-opacity=".8" stroke="#85a68c"/><path d="M367 174h10v4h-10z" fill="#a8cab2"/><path d="m376 179 0 9m-3-9v9m-3-9v9" stroke="#b3a76c" stroke-width="1.3"/></g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" fill="none">
+ <defs><linearGradient id="top" x1="174" y1="92" x2="263" y2="217" gradientUnits="userSpaceOnUse"><stop stop-color="#fafcfb"/><stop offset=".55" stop-color="#e7eee9"/><stop offset="1" stop-color="#bbcbbf"/></linearGradient><linearGradient id="front" x1="100" y1="150" x2="93" y2="228" gradientUnits="userSpaceOnUse"><stop stop-color="#d8e3db"/><stop offset="1" stop-color="#a7bcac"/></linearGradient><linearGradient id="side" x1="326" y1="169" x2="337" y2="227" gradientUnits="userSpaceOnUse"><stop stop-color="#bbcfc0"/><stop offset="1" stop-color="#899f90"/></linearGradient><filter id="s"><feGaussianBlur stdDeviation="8"/></filter></defs>
+ <ellipse cx="220" cy="251" rx="147" ry="13" fill="#173f35" opacity=".12" filter="url(#s)"/>
+ <path d="m78 134 94-59 195 51-82 66z" fill="url(#top)" stroke="#b8ccbc"/>
+ <path d="m78 134 207 58v51L78 184z" fill="url(#front)" stroke="#a1b9a6"/>
+ <path d="m285 192 82-66v50l-82 67z" fill="url(#side)" stroke="#9bb1a1"/>
+ <path d="m89 132 85-51 181 48M80 137l204 57 79-62" stroke="#fff" stroke-opacity=".8"/>
+ <path d="m127 122 68 18 42-28-66-18z" fill="#f4f7f3" stroke="#cfdbcf"/><text x="146" y="120" fill="#526b58" font-family="Arial,sans-serif" font-weight="700" font-size="12" transform="rotate(15 146 120)">Panasonic</text>
+ <g stroke="#8ca58e" stroke-width="2.4"><path d="m231 146 27 8m-20-14 27 8m-20-14 27 8m-20-14 27 8m-20-14 27 8m-20-14 27 8m-20-14 27 8m-20-14 27 8"/></g>
+ <text x="95" y="166" fill="#5c745f" font-family="Arial,sans-serif" font-weight="700" font-size="12" transform="rotate(15 95 166)">Panasonic</text>
+ <path d="m97 178 75 21" stroke="#91a993" stroke-width=".7"/>
+ <g fill="#a0b7a1" stroke="#6e8c75" stroke-width=".7"><path d="m198 180 10 3v17l-10-3zm15 4 10 3v17l-10-3zm15 4 10 3v17l-10-3zm15 4 10 3v17l-10-3z"/></g><g fill="#273f2a"><path d="m200 184 6 2v9l-6-2zm15 4 6 2v9l-6-2zm15 4 6 2v9l-6-2zm15 4 6 2v9l-6-2z"/></g>
+ <circle cx="269" cy="215" r="2.5" fill="#4b9d77"/>
+ <g stroke="#6b8a72" stroke-width="1.5"><path d="m307 190 0 25m6-30v25m6-30v25m6-30v25m6-30v25m6-30v25m6-30v25"/></g>
+ <path d="m92 190 13 4v6l-13-4zm169 47 13 4v6l-13-4z" fill="#55745e"/>
+</svg>

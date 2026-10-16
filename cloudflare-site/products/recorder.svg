@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" fill="none">
+ <defs>
+  <linearGradient id="top" x1="164" y1="77" x2="266" y2="212" gradientUnits="userSpaceOnUse"><stop stop-color="#46524f"/><stop offset=".5" stop-color="#293431"/><stop offset="1" stop-color="#17221f"/></linearGradient>
+  <linearGradient id="front" x1="211" y1="164" x2="213" y2="228" gradientUnits="userSpaceOnUse"><stop stop-color="#313d37"/><stop offset="1" stop-color="#101a15"/></linearGradient>
+  <linearGradient id="right" x1="340" y1="148" x2="340" y2="210" gradientUnits="userSpaceOnUse"><stop stop-color="#1b2921"/><stop offset="1" stop-color="#0a1510"/></linearGradient>
+  <filter id="s"><feGaussianBlur stdDeviation="8"/></filter>
+ </defs>
+ <ellipse cx="224" cy="242" rx="163" ry="15" fill="#153d2d" opacity=".15" filter="url(#s)"/>
+ <path d="m67 136 95-57 217 50-83 61z" fill="url(#top)" stroke="#49594e"/>
+ <path d="m67 136 229 54v44L67 179z" fill="url(#front)" stroke="#17261a"/>
+ <path d="m296 190 83-61v45l-83 60z" fill="url(#right)" stroke="#17261a"/>
+ <path d="m77 137 218 51M297 190l73-54" stroke="#718075" stroke-opacity=".45"/>
+ <path d="m89 131 71-40 190 43" stroke="#879187" stroke-opacity=".12"/>
+ <path d="m113 145 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5" stroke="#0e1a13" stroke-width="3" stroke-linecap="round"/>
+ <path d="m260 170 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5m-13-10 21 5" stroke="#0e1a13" stroke-width="3" stroke-linecap="round"/>
+ <text x="83" y="161" fill="#e0e7df" font-family="Arial,sans-serif" font-size="18" font-style="italic" font-weight="700" transform="matrix(1 .24 0 1 0 -20)">dahua</text>
+ <g fill="#9caca0"><ellipse cx="198" cy="187" rx="1.8" ry="2.5"/><ellipse cx="209" cy="190" rx="1.8" ry="2.5"/></g><ellipse cx="220" cy="192" rx="1.8" ry="2.5" fill="#4bb797"/>
+ <path d="m247 194 22 5v10l-22-5z" fill="#050e09" stroke="#768879" stroke-width=".8"/><path d="m250 197 16 4v4l-16-4z" fill="#3a4d3e"/>
+ <path d="m86 184 14 3v7l-14-3zm184 44 14 3v7l-14-3zm85-35 10-7v6l-10 7z" fill="#101a14"/>
+ <g stroke="#526152" stroke-width="2"><path d="m321 183 0 23m7-28v23m7-28v23m7-28v23m7-28v23m7-28v23"/></g>
+ <circle cx="74" cy="155" r="1.6" fill="#6a7a6b"/><circle cx="288" cy="209" r="1.6" fill="#6a7a6b"/>
+</svg>
