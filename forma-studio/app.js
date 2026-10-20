@@ -45,7 +45,23 @@ function assetDownload(i,svg){var a=app.assets[i];if(!a)return;if(a.kind==='layo
 function usageView(){['chats','layouts','images','fails'].forEach(function(k){$('metric'+k[0].toUpperCase()+k.slice(1)).textContent=app.usage[k]||0})}
 function settingsView(){$('chatEndpointInput').value=app.settings.chat;$('imageEndpointInput').value=app.settings.image;$('imageModelSelect').value=app.settings.imageModel}
 function updateSettings(){app.settings.chat=$('chatEndpointInput').value.trim().replace(/\/+$/,'')||app.settings.chat;app.settings.image=$('imageEndpointInput').value.trim().replace(/\/+$/,'')||app.settings.image;app.settings.imageModel=$('imageModelSelect').value;save()}
-async function test(which){updateSettings();var b=which==='chat'?app.settings.chat:app.settings.image,id=which==='chat'?'chatTestResult':'imageTestResult',path=which==='image'?'/api/health':(/localhost|127\.0\.0\.1/.test(b)?'/api/health':'/health');$(id).textContent='Testing…';var ctrl=new AbortController(),timer=setTimeout(function(){ctrl.abort()},9000);try{var r=await fetch(baseUrl(b)+path,{signal:ctrl.signal});if(!r.ok)throw Error('HTTP '+r.status);$(id).textContent='Connected';if(which==='chat'){$('connectionDot').classList.add('ok');$('connectionText').textContent='Chat connected'}else{$('engineStatusDot').classList.add('ok');$('engineStatus').textContent='Image engine online'}}catch(e){$(id).textContent='Unavailable: '+apiError(e)}finally{clearTimeout(timer)}}
+async function test(which){updateSettings();var b=which==='chat'?app.settings.chat:app.settings.image,id=which==='chat'?'chatTestResult':'imageTestResult',path=which==='image'?'/api/health':(/localhost|127\.0\.0\.1/.test(b)?'/api/health':'/health');$(id).textContent='Testing…';var ctrl=new AbortController(),timer=setTimeout(function(){ctrl.abort()},9000);try{var r=await fetch(baseUrl(b)+path,{signal:ctrl.signal});if(!r.ok)throw Error('HTTP '+r.status);var data=await r.json().catch(function(){return {}});if(which==='image'&&!data.imagesConfigured){$(id).textContent='Local engine online · add a NVIDIA key below';$('engineStatus').textContent='Key needed';return}$(id).textContent='Connected';if(which==='chat'){$('connectionDot').classList.add('ok');$('connectionText').textContent='Chat connected'}else{$('engineStatusDot').classList.add('ok');$('engineStatus').textContent='Image engine online'}}catch(e){$(id).textContent='Unavailable: '+apiError(e)}finally{clearTimeout(timer)}}
+async function saveNvidiaKeys(){
+ var field=$('nvidiaKeysInput'),result=$('keySetupResult'),keys=field.value.trim();
+ if(!keys){result.textContent='Paste your NEW NVIDIA API key first.';return}
+ if(!/^http:\/\/(localhost|127\.0\.0\.1):\d{2,5}$/.test(location.origin)){result.textContent='For security, this feature works only on your locally running FORMA Studio.';return}
+ $('saveNvidiaBtn').disabled=true;result.textContent='Saving privately to local engine...';
+ try{
+  var r=await fetch('/api/local-keys',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({keys:keys})});
+  var d=await r.json().catch(function(){return {}});
+  if(!r.ok)throw Error(d.error||'Could not save keys');
+  field.value='';
+  result.textContent=d.count+' key(s) configured on this laptop. Ready to test image generation.';
+  notify('NVIDIA connection saved locally. Try Generate AI image.');
+  await test('image');
+ }catch(e){result.textContent='Setup failed: '+apiError(e)}
+ finally{$('saveNvidiaBtn').disabled=false}
+}
 function exportData(){var d={version:2,projects:app.projects,current:app.current,settings:app.settings,usage:app.usage,note:'This backup includes no keys or image bytes.'},a=document.createElement('a'),url=URL.createObjectURL(new Blob([JSON.stringify(d,null,2)],{type:'application/json'}));a.href=url;a.download='forma-workspace.json';a.click();setTimeout(function(){URL.revokeObjectURL(url)},1000);notify('Project backup exported.')}
 function importData(file){if(!file)return;var reader=new FileReader();reader.onload=function(){try{var d=JSON.parse(reader.result);if(d.version!==2||!Array.isArray(d.projects))throw Error('Unsupported backup');if(!confirm('Replace your current projects with this backup?'))return;app.projects=d.projects.filter(function(p){return p.id&&Array.isArray(p.messages)});if(!app.projects.length)app.projects=[fresh()];app.current=app.projects.some(function(p){return p.id===d.current})?d.current:app.projects[0].id;Object.assign(app.usage,d.usage||{});Object.assign(app.settings,d.settings||{});save();sidebar();messages(true);restoreDesign();settingsView();view('studio');notify('Workspace imported.')}catch(e){notify('Invalid backup: '+apiError(e))}};reader.readAsText(file)}
 function copy(s){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(String(s)).then(function(){notify('Copied.')}).catch(function(){notify('Copy unavailable in this browser.')});else notify('Clipboard requires a secure browser context.')}
@@ -62,7 +78,7 @@ function bind(){
  $('downloadPngBtn').onclick=function(){saveVisual(false)};$('downloadSvgBtn').onclick=function(){saveVisual(true)};$('copyPromptBtn').onclick=function(){copy($('promptInput').value||project().brief)};
  $('assetGrid').onclick=function(e){var a=e.target.closest('[data-download]'),b=e.target.closest('[data-svg]');if(a)assetDownload(Number(a.dataset.download),false);if(b)assetDownload(Number(b.dataset.svg),true)};
  $('resetUsageBtn').onclick=function(){if(confirm('Reset local action counters?')){app.usage={chats:0,layouts:0,images:0,fails:0};save();usageView()}};
- ['chatEndpointInput','imageEndpointInput','imageModelSelect'].forEach(function(id){$(id).onchange=updateSettings});$('testChatBtn').onclick=function(){test('chat')};$('testImageBtn').onclick=function(){test('image')};
+ ['chatEndpointInput','imageEndpointInput','imageModelSelect'].forEach(function(id){$(id).onchange=updateSettings});$('testChatBtn').onclick=function(){test('chat')};$('testImageBtn').onclick=function(){test('image')};$('saveNvidiaBtn').onclick=saveNvidiaKeys;
  $('exportDataBtn').onclick=exportData;$('exportSettingsBtn').onclick=exportData;$('importDataBtn').onclick=function(){$('importFile').click()};$('importFile').onchange=function(e){importData(e.target.files[0]);e.target.value=''};$('settingsAvatar').onclick=function(){view('settings')};
  document.addEventListener('keydown',function(e){if(e.key.toLowerCase()==='n'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&['INPUT','TEXTAREA'].indexOf(document.activeElement.tagName)<0){e.preventDefault();createDialog()}});
 }
