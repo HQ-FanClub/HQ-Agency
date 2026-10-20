@@ -36,11 +36,11 @@ async function handler(req,res){
   // Browser-only onboarding, bound to loopback. No cross-origin key configuration.
   const host=req.headers.host||'';
   const origin=req.headers.origin||'';
-  if(!/^((localhost)|(127\\.0\\.0\\.1)):\\d{2,5}$/.test(host)||origin!=='http://'+host){
+  if(!/^((localhost)|(127\.0\.0\.1)):\d{2,5}$/.test(host)||origin!=='http://'+host){
    return respond(res,403,{error:'Key setup is only allowed from this local FORMA window.'});
   }
   let body;try{body=await readBody(req,15000)}catch(e){return respond(res,400,{error:'Invalid key request'})}
-  const incoming=String(body&&body.keys||'').split(/[\\s,]+/).filter(Boolean);
+  const incoming=String(body&&body.keys||'').split(/[\s,]+/).filter(Boolean);
   const keys=[...new Set(incoming)];
   if(keys.length<1||keys.length>30||keys.some(k=>!/^nvapi-[A-Za-z0-9_-]{25,230}$/.test(k))){
    return respond(res,400,{error:'Paste one or more NVIDIA API keys, separated by commas or newlines.'});
@@ -50,7 +50,7 @@ async function handler(req,res){
    let current=fs.existsSync(envPath)?fs.readFileSync(envPath,'utf8'):'';
    const value='NVIDIA_KEYS='+keys.join(',');
    if(/^NVIDIA_KEYS=.*$/m.test(current))current=current.replace(/^NVIDIA_KEYS=.*$/m,value);
-   else current+=(current.endsWith('\\n')?'':'\\n')+value+'\\n';
+   else current+=(current.endsWith('\n')?'':'\n')+value+'\n';
    fs.writeFileSync(envPath,current,{encoding:'utf8',mode:0o600});
    NVIDIA_KEYS=keys;
    return respond(res,200,{configured:true,count:keys.length,message:'Saved privately to this laptop. You can now try AI image generation.'});
