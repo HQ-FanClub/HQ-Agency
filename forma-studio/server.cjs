@@ -99,6 +99,8 @@ async function handler(req,res){
  if(url.pathname.startsWith('/api/'))return respond(res,404,{error:'This API route is not available in local prototype.'});
  if(req.method!=='GET'&&req.method!=='HEAD')return respond(res,405,{error:'Method not allowed'});
  let relative=decodeURIComponent(url.pathname==='/'?'/index.html':url.pathname);
+ // Allowlist browser assets; never serve .env, credentials, configs, scripts, or repository metadata.
+ if(!new Set(['/index.html','/app.js','/design.js','/styles.css']).has(relative))return respond(res,404,{error:'Not found'});
  if(relative.includes('..')||relative.includes('\\')||relative.includes('\0'))return respond(res,403,{error:'Forbidden'});
  let target=path.resolve(root,'.'+relative);if(!target.startsWith(root+path.sep))return respond(res,403,{error:'Forbidden'});
  try{const st=fs.statSync(target);if(!st.isFile())throw Error('Not a file');res.writeHead(200,{'Content-Type':types[path.extname(target)]||'application/octet-stream','X-Content-Type-Options':'nosniff','Cache-Control':'no-store'});fs.createReadStream(target).pipe(res)}
