@@ -13,6 +13,19 @@ A separate, deliberately non-production prototype in **\`forma-studio/\`**. Keep
 - Local counts of successful chats, layouts, images and failed requests. They **do not** represent provider billed usage.
 - Pricing screens are concept-only, with no payments or subscriptions.
 
+## Windows: one-click setup (NEW)
+
+1. Download the latest branch ZIP and extract.
+2. Open the nested `forma-studio` folder.
+3. Double-click `START-FORMA.bat` (no npm install).
+4. Visit `http://localhost:3210` (the launcher should open it).
+5. In **Settings → Image / video backend → Connect NVIDIA privately**, paste **freshly rotated** NVIDIA key(s) and click **Save keys locally**. You do not have to edit any source code or environment file.
+6. Keep the black startup window open and test **Studio → Generate AI image**.
+
+The local setup API accepts up to 30 keys separated by commas or newlines, stores them **only in the local `.env`** and activates them immediately. It accepts requests only from the matching localhost web origin. The source repository and downloads contain no API keys. No real provider image was generated during automated testing; availability depends on NVIDIA service, entitlement and quotas. **All keys previously shared in chats should be revoked, not reused.**
+
+The local server serves only `index.html`, `app.js`, `design.js`, and `styles.css`. It explicitly blocks browser access to `.env` and other sensitive local files.
+
 ## Quick start — one command
 
 Requires Node.js 20+.
