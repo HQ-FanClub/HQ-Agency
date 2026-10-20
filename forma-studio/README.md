@@ -1,58 +1,45 @@
-# FORMA Studio v2 — Design-first test build
+# FORMA Creative Lab v3 · Private test build
 
-A separate, deliberately non-production prototype in **\`forma-studio/\`**. Keeps the existing HQ Agency and your live FORMA deployments untouched.
+A **visual-first** experimental studio inspired by the workflow category of professional generative media tools, not an identical clone of their UI or proprietary models.
 
-## What is implemented
+## What you can actually do now
 
-- Original responsive editorial app UI: Studio, Projects, Assets, Usage, Pricing, Settings.
-- Creative specialist conversations backed by your existing Cloudflare Ollama Worker.
-- User/agent message separation, formatted headings, copy, progress clock, stop, retry, scroll preservation.
-- Procedural vector design engine: three distinct editable SVG poster compositions, custom text/palette/aspect ratio, downloadable SVG and raster PNG. **These are generated programmatically, not by an image diffusion model**.
-- Optional NVIDIA FLUX/SD3 image generation gateway, using **server-side credentials only**. Status and failure shown rather than fabricated results.
-- Projects and conversations in browser localStorage, JSON import/export.
-- Local counts of successful chats, layouts, images and failed requests. They **do not** represent provider billed usage.
-- Pricing screens are concept-only, with no payments or subscriptions.
+- **Image Studio:** send a prompt to your own configured NVIDIA API, choose FLUX Schnell, FLUX Dev, or SD3 Medium (legacy endpoint) and output aspect ratio; preview genuine provider-returned image and download PNG. If no key is configured, app clearly says so and takes you to Connections. **Image generation requires provider access and may use paid/free quota. Not automatically free.**
+- **Motion Studio:** import JPG/PNG/WebP or use generated image, choose six camera moves, render a *real downloadable WebM video file* locally via browser Canvas and MediaRecorder. This is animated still-image camera motion, **not diffusion-based AI motion or coherent newly generated content**. Chrome/Edge support required.
+- **My Creations:** gallery of generated images/video outputs during the active browser session. Download anything important.
+- **Creative Team:** separate Ollama-backed assistant screen with ten role choices. Calls your existing Cloudflare Worker through the loopback gateway.
+- **Usage:** counts successful images, motion exports, AI messages and failed actions from this browser, NOT provider billing.
+- **Pricing:** honest concept-only plans; no checkout, subscription or payment integration.
+- **Connections:** set freshly issued NVIDIA key(s) via form. They are POSTed to local localhost server and saved in local \`.env\`. Key values are not embedded in HTML/JS, nor written to localStorage.
 
-## Windows: one-click setup (NEW)
+## Start on Windows
 
-1. Download the latest branch ZIP and extract.
-2. Open the nested `forma-studio` folder.
-3. Double-click `START-FORMA.bat` (no npm install).
-4. Visit `http://localhost:3210` (the launcher should open it).
-5. In **Settings → Image / video backend → Connect NVIDIA privately**, paste **freshly rotated** NVIDIA key(s) and click **Save keys locally**. You do not have to edit any source code or environment file.
-6. Keep the black startup window open and test **Studio → Generate AI image**.
+1. Download latest branch ZIP at https://github.com/HQ-FanClub/HQ-Agency/archive/refs/heads/forma-cinema-v3.zip
+2. Extract ZIP. Open the **forma-studio** folder in the extracted tree.
+3. Double-click **START-FORMA.bat**. Node.js version 20+ is required, no npm packages.
+4. Open **http://localhost:3210**.
+5. Connections → NVIDIA image engine: create **new** NVIDIA key(s) and paste into local field, click Save locally. Do **not** reuse any keys previously pasted in a chat.
+6. Image Studio → enter prompt → Generate image.
+7. Motion Studio → Use last generation or Upload image → pick motion → Render motion clip → Download video.
 
-The local setup API accepts up to 30 keys separated by commas or newlines, stores them **only in the local `.env`** and activates them immediately. It accepts requests only from the matching localhost web origin. The source repository and downloads contain no API keys. No real provider image was generated during automated testing; availability depends on NVIDIA service, entitlement and quotas. **All keys previously shared in chats should be revoked, not reused.**
+No public website has been updated by this code branch. Only the local test version is configured.
 
-The local server serves only `index.html`, `app.js`, `design.js`, and `styles.css`. It explicitly blocks browser access to `.env` and other sensitive local files.
+**If provider says HTTP 401, 403, 404, 422, or 429**, these indicate rejected credentials, lack of model entitlement, changed endpoint/request schema, or rate/credit quota. A saved key does not guarantee image generation. No live NVIDIA call was performed during this code build.
 
-## Quick start — one command
+## Tech and trust boundaries
 
-Requires Node.js 20+.
+- Local Node 20+ HTTP server binds **127.0.0.1** and offers a small **static asset allowlist**; it must never serve \`.env\`, repository metadata, or arbitrary disk files.
+- Server routes: \`GET /api/health\`, \`POST /api/local-keys\`, \`POST /api/generate\`, \`POST /api/chat\`.
+- Browser requests are same-origin to **http://localhost:3210**. Do not add keys to client-side JavaScript.
+- The public GitHub repository is not a safe place for keys. The private \`.env\` is git-ignored.
+- *CORS is not authentication.* Before production: implement user auth and session scopes, backend quotas and abuse prevention, durable media storage, payment provider + real usage reconciliation, secure hosting, logging, consent and privacy controls.
+- RTX 4050 can run optimized local diffusion workflows, e.g. ComfyUI under low VRAM. That separate adapter is **not implemented in this build**.
+- Generative video models from Higgsfield, LTX, Kling, Sora, etc. are **not available** inside this source yet. Local camera-motion exporting is functional in browsers supporting MediaRecorder; provider AI video integration requires a separately funded API and backend work.
 
-1. Download this branch from GitHub as ZIP.
-2. Extract and open PowerShell **inside the \`forma-studio\` folder**.
-3. Run \`node server.cjs\`
-4. Open http://localhost:3210
+## Key safety
 
-Ollama calls are proxied by the local server to your existing Cloudflare Worker. If its origin restriction changes, set \`FORMA_FRONTEND_ORIGIN\` in local \`.env\` and fix the Worker origin policy server-side. This proxy is for private LOCAL testing, not production authentication.
+The old shared .env and 21 posted NVIDIA API keys are exposed. Revoke and reissue **all keys shared outside private local storage**, including LTX/Supabase secrets where relevant. This repository never stores any of them.
 
-For **real NVIDIA images**, create \`forma-studio/.env\` using \`.env.example\`, insert **newly rotated** provider keys and restart the local server. No API keys may be stored in the client, copied into HTML/JS, or committed to GitHub. Image endpoints/entitlements have **not** been verified live. NVIDIA may reject requests due to API access, policy, quota, cost, or changed endpoints.
+## Verification status
 
-For editing graphics offline, the app works even without any API key.
-
-## Hosted Cloudflare version
-
-These static files can be deployed to Cloudflare Workers static assets for browsing, editable SVG layout creation and downloads. A static Cloudflare HTTPS site **cannot reliably call an unprotected http://localhost:3000 on a user's PC**. Use a secure authenticated gateway or private tunnel to an image engine, with a proper origin policy. Do not expose your NVIDIA/LTX keys or your laptop's local engine to the public Internet.
-
-Cloudflare Ollama Worker is currently configured to allow only https://forma-creative-os.hqd.workers.dev. Test the frontend on that exact origin or adjust allowed origins securely. **CORS is not authentication**.
-
-## GPU path for RTX 4050 laptop
-
-Many laptop RTX 4050s have 6 GB VRAM. Use optimized SD 1.5 or SDXL in low-VRAM mode via ComfyUI, with a local gateway API. Avoid trying to run unoptimized 10 GB CompVis SD v1 code. ComfyUI integration is a future provider adapter; **not already wired into this package**.
-
-## Production gates
-
-Rotate all credentials found in shared old \`.env\` files (NVIDIA keys, LTX key, Supabase secret). All 18 NVIDIA keys in the shared file must be considered compromised. Revoke them and use new secrets. Implement real user login, server-enforced quotas, trusted origin policy, durable rate limiting, image storage, provider reconciliation, persistent DB, real billing, and end-to-end QA before public launch. **Do not deploy local \`.env\`**.
-
-No actual real money pricing or billing integration is included. Image-to-video is documented in the existing HQ Vision engine but not integrated in this v2 UI. This is a private test milestone, not the full finished production system.
+JavaScript syntax and code wiring have been inspected; a real browser render, live NVIDIA generation and WebM encoding on your specific laptop have **not** been tested by the assistant. This is a test milestone rather than a production launch.
